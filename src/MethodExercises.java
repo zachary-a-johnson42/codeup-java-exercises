@@ -1,5 +1,6 @@
 import java.util.Locale;
 import java.util.Scanner;
+import java.lang.Math;
 
 public class MethodExercises {
 
@@ -34,6 +35,7 @@ public class MethodExercises {
             return firstNum;
         }
         //this has to be here because it screams if I don't have a return statement in the body.
+        //maybe I can use void?
         return Multiplication(firstNum,secondNum);
     }
 
@@ -49,14 +51,16 @@ public class MethodExercises {
         Scanner scanner = new Scanner(System.in);
         System.out.printf("Enter a number between %s, and %s%n", min, max);
         int userInput = scanner.nextInt();
-        if(userInput < min || userInput > max){
+        if(userInput <= min || userInput >= max){
             System.out.println("Invalid number, please try again");
-            getInteger(min,max);
         }
-        return userInput;
+        else if(userInput > min && userInput < max){
+            return userInput;
+        }
+        return getInteger(min,max);
     }
 
-    public static long getFactorial(long number){
+    public static long getFactorial(){
         Scanner scanner = new Scanner(System.in);
         long userFactorial = getInteger(1,10);
         System.out.printf("You have chose %s. Would you like to continue?%n", userFactorial);
@@ -64,12 +68,35 @@ public class MethodExercises {
         String userChoice = scanner.next();
 
         if(userChoice.equalsIgnoreCase("no")){
-           System.out.println("goodbye");
+           System.out.println("You've chosen no. Goodbye");
         }
 
-        if(userChoice.equalsIgnoreCase("yes")){
-
+        else if(userChoice.equalsIgnoreCase("yes")){
+            int factorial = 1;
+            for (int i = 1; i <= userFactorial ; i++) {
+                factorial *= i;
+            }
+            System.out.printf("%s! = %s%n",userFactorial,factorial);
+            return factorial;
         }
+        else{
+            System.out.println("Invalid entry. Goodbye.");
+        }
+
+        return userFactorial;
+    }
+
+    public static void diceRolling(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Let's roll a pair of dice! How many sides does the dice have?");
+        int min = 1;
+        int diceMax = scanner.nextInt();
+        int firstDie = (int) (Math.random() * diceMax) + min;
+        int secondDie = (int) (Math.random() * diceMax) + min;
+        System.out.printf("You have chosen a %s die.%n", diceMax);
+        System.out.printf("Your first die rolled a %s! Your second die roll a %s!%n", firstDie, secondDie);
+        System.out.printf("You're combined roll is %s%n", firstDie + secondDie);
+
     }
 
     public static void main(String[] args){
@@ -84,6 +111,7 @@ public class MethodExercises {
         System.out.println(multed);
         System.out.println(dived);
         System.out.println(modded);
-        getInteger(10,100);
+        getFactorial();
+        diceRolling();
     }
 }
