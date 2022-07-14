@@ -5,12 +5,12 @@ public class Input {
 
     private static Scanner scanner = new Scanner(System.in);
 
-    static String getString(){
+    public static String getString(){
         System.out.println("Enter your sentence");
         return scanner.nextLine();
     }
 
-    static boolean yesNo(){
+    public static boolean yesNo(){
         System.out.println("If you would like to continue, please type \"Yes\"");
         String userString = Input.getString();
 
@@ -20,14 +20,14 @@ public class Input {
         return false;
     }
 
-    static int getInt(){
+    public static int getInt(){
         System.out.println("Input a number");
         int userInt = scanner.nextInt();
         return userInt;
     }
 
     //Overloaded method to set range for number...
-    static int getInt(int min, int max){
+    public static int getInt(int min, int max){
         System.out.printf("Input a number between %s and %s%n", min, max);
         int userInt = scanner.nextInt();
 
@@ -38,14 +38,14 @@ public class Input {
         return userInt;
     }
 
-    static double getDouble(){
+    public static double getDouble(){
         System.out.println("Enter a number with decimal placements");
         double userDouble = scanner.nextDouble();
         return userDouble;
     }
 
     //Overloaded method to set range, same as getInt
-    static double getDouble(double min, double max) {
+    public static double getDouble(double min, double max) {
         System.out.printf("Enter a number with decimal placement between %s and %s%n", min, max);
         double userDouble = scanner.nextDouble();
 

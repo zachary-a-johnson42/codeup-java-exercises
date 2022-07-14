@@ -10,7 +10,7 @@ public class Circle {
 
     //Overloaded constructor that sets radius
     public Circle(double radius){
-
+        this.radius = radius;
     }
 
     public double getArea(){
