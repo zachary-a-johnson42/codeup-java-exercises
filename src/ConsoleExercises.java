@@ -20,15 +20,15 @@ public class ConsoleExercises {
 
         // This is somehow breaking my nextLine..
 
-        System.out.println("Enter 3 words");
-        String word1 = scanner.next();
-        String word2 = scanner.next();
-        String word3 = scanner.next();
-        System.out.printf("Your words were, %s, %s, and %s%n",word1, word2, word3);
+//        System.out.println("Enter 3 words");
+//        String word1 = scanner.next();
+//        String word2 = scanner.next();
+//        String word3 = scanner.next();
+//        System.out.printf("Your words were, %s, %s, and %s%n",word1, word2, word3);
 
         // This is necessary, it's eating up some weird leftover stuff on a line.
         // If it's not in the code, nextLine completely skips, and I can't put in a sentence
-        scanner.nextLine();
+       // scanner.nextLine();
 
         System.out.println("Enter a sentence");
         String userSentence = scanner.nextLine();
