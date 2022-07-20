@@ -4,11 +4,7 @@ import java.util.HashMap;
 
 public class GradesApplication {
 
-    public void getStudentInfo(){
-
-    }
-
-    public static void main(String[] args){
+    public static void main(String[] args) {
         //hashmap for all students. Key is String, Value is a Student Object
         HashMap<String, Student> students = new HashMap<>();
 
@@ -41,39 +37,55 @@ public class GradesApplication {
 
         //Setting up console printouts for user choice
         System.out.println("Welcome!");
-        System.out.println("Here are the GitHub usernames of our students");
 
-        //While building, it will show a bunch of errors. Just keep going and it'll quit complaining
-        students.forEach(
-                (key, value)
-                        //lambda expression!
-                -> System.out.printf("| %s ", key)
-        );
+        boolean userChoice = true;
 
-        System.out.println("What student would you like more information on?");
-        // Getting user input
-        String studentInformation = Input.getString();
-        // If key doesn't exist, throw an error.
-        if(!students.containsKey(studentInformation)){
-            System.out.println("Student doesn't exist.");
-        }
+        //Using do while loop, because I want it to run at least once
+        //As long as the yes/no stays true, keep looping.
+        //Break case is when the boolean is false, when a user types anything but yes it toggles.
+        do {
+            System.out.println("Here are the GitHub usernames of our students");
 
-        if (students.containsKey(studentInformation)) {
-            System.out.printf("Name: %s - GitHub Username : %s%n", students.get(studentInformation).getName(), studentInformation);
-            System.out.printf("Current Average : %s%n", students.get(studentInformation).getGradeAverage());
-            System.out.println("Would you like to see another student?");
-            boolean userChoice = Input.yesNo();
+            //While building, it will show a bunch of errors. Just keep going and it'll quit complaining
+            students.forEach(
+                    (key, value)
+                            //lambda expression!
+                            -> System.out.printf("| %s ", key)
+            );
 
-            if(userChoice == true){
-                //Maybe use recursion to get student info over and over
-                // need to do all of the above again
-                studentInformation = Input.getString();
-            } else {
-                System.out.println("Goodbye, and have a wonderful day!");
+            System.out.println("What student would you like more information on?");
+            // Getting user input
+            String studentInformation = Input.getString();
+            // If key doesn't exist, throw an error.
+            if (!students.containsKey(studentInformation)) {
+                System.out.println("Student doesn't exist.");
             }
-        }
 
+            if (students.containsKey(studentInformation)) {
+                // Name and GitHub username
+                System.out.printf("Name: %s - GitHub Username : %s%n", students.get(studentInformation).getName(), studentInformation);
+                //Getting all grades
+                System.out.println("Student's grades currently are..");
+                System.out.println(students.get(studentInformation).getAllGrades());
+                //Show student grade average
+                System.out.printf("Current Average : %s%n", students.get(studentInformation).getGradeAverage());
+                //Class average.
+                System.out.println("Would you like to see class average?");
+                boolean classAverageChoice = Input.yesNo();
+                double classAverage = 0;
+                if(classAverageChoice) {
+                    //While building, it will show a bunch of errors. Just keep going and it'll quit complaining
+                    for(Student value : students.values()){
+                       classAverage += value.getGradeAverage();
+                    }
+                    }
+                System.out.printf("Class average is %s%n", classAverage / students.size());
+                }
 
+                System.out.println("Would you like to see another student?");
+                userChoice = Input.yesNo();
 
+        } while (userChoice == true);
+        System.out.println("Goodbye, have a nice day!");
     }
 }
