@@ -9,8 +9,16 @@ public class GroceryItem {
         this.groceryAmount = amount;
     }
 
+    public String getGroceryName() {
+        return groceryName;
+    }
+
     public void setGroceryName(String groceryName) {
         this.groceryName = groceryName;
+    }
+
+    public int getGroceryAmount() {
+        return groceryAmount;
     }
 
     public void setGroceryAmount(int groceryAmount) {
