@@ -78,7 +78,7 @@ public class GroceryApp {
                     categories.get(userCategory).add(newGroceryItem);
                     System.out.println("THE CURRENT VALUE IN CATEGORIES IS");
 
-                    System.out.println(categories.get(userCategory).get(0));
+                    System.out.println(categories.get(userCategory));
                 }
             }
         } while(addItemBool);
@@ -86,8 +86,6 @@ public class GroceryApp {
         System.out.println("Your grocery list is..");
         // I can't drill down into the GroceryItem object name and value..
         // Maybe set up ANOTHER hashmap? key item name, value is quantity??
-
-
 
         System.out.println("Thank you, goodbye!");
     }
