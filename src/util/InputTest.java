@@ -8,5 +8,7 @@ public class InputTest {
         Input.getInt();
         Input.getDouble(0.5, 10.111);
         Input.getDouble();
+        System.out.println(Input.getByte());
+        System.out.println(Input.getHex());
     }
 }
